@@ -16,11 +16,10 @@ import { getUserFromLocalStorage } from "../utils/localStorage";
 
 const AllPost = () => {
 	const dispatch = useDispatch();
-	const { allPost, allPostStatus, searchQuery, hasMore } = useSelector(
-		(store) => store.allPostSlice
-	);
+	const { allPost, allPostStatus, searchQuery, hasMore, page } =
+		useSelector((store) => store.allPostSlice);
 	const token = getUserFromLocalStorage();
-	const loadingSkeletonNumber = 10;
+	const loadingSkeletonNumber = page == 1 ? 10 : 1;
 
 	const { user } = useSelector((store) => store.userSlice);
 
