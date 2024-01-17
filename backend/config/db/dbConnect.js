@@ -44,5 +44,5 @@ db.once("open", () => {
 				// Handle connection errors if needed
 			}
 		});
-	}, 150000); // Send a warm-up query every 60 seconds (adjust as needed)
+	}, 60000); // Send a warm-up query every 60 seconds (adjust as needed)
 });
