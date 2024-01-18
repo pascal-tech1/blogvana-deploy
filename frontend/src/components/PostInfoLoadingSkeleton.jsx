@@ -2,7 +2,7 @@ import React from "react";
 
 const PostInfoLoadingSkeleton = () => {
 	return (
-		<div className="border-b dark:border-b dark:border-b-lightdark py-6">
+		<div className="border-b dark:border-b dark:border-b-lightdark py-6  mb-2 animate-pulse  ">
 			<div
 				role="status"
 				className=" relative flex justify-between gap-10    max-[351px]:flex-col max-[351px]:max-w-[90vw] max-[351px]:gap-4 md:max-w-[80vw]  mb-2 animate-pulse   mt-1 rounded-md "
