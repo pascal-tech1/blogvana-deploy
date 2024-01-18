@@ -72,7 +72,7 @@ const CoverPhoto = ({ user }) => {
 					originalImgUrl={user?.coverPhoto}
 					blurImageStr={user?.blurCoverPhoto}
 					optimizationStr={"q_auto,f_auto,w_1000"}
-					paddingBottom={"20vh"}
+					paddingBottom={"19vh"}
 				/>
 			</div>
 

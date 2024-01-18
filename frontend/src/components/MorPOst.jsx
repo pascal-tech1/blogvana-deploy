@@ -9,6 +9,7 @@ import {
 	LikesSaveViews,
 	PostUserInfo,
 	LoadingSpinner,
+	CategoryViewsReadMin,
 } from "../components";
 
 const MorePost = ({ post, status }) => {
@@ -49,7 +50,10 @@ const MorePost = ({ post, status }) => {
 						</div>
 
 						<PostUserInfo post={post} />
-						<LikesSaveViews post={post} />
+						<div className=" flex justify-between flex-wrap">
+							<CategoryViewsReadMin post={post} />
+							<LikesSaveViews post={post} />
+						</div>
 					</div>
 				</div>
 			))}

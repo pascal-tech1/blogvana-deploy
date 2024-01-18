@@ -115,7 +115,7 @@ export const CropImage = ({
 	};
 	const handleSetCoverCropping = () => {
 		if (typeof cropperRef.current?.cropper !== "undefined") {
-			cropperRef.current?.cropper.setAspectRatio(4);
+			cropperRef.current?.cropper.setAspectRatio(5);
 		}
 	};
 	const handleSetProfileCropping = () => {

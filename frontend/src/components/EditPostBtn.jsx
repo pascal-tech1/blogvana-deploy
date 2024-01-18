@@ -24,7 +24,7 @@ const EditPostBtn = ({ postId }) => {
 		}
 	};
 	return (
-		<div>
+		<div className=" font-inter">
 			<button
 				onClick={handleEditPost}
 				className="border self-center font-inter px-1 hover:bg-blue-400 text-center  hover:text-white rounded-md transition-all delay-75 border-blue-400 "
@@ -32,7 +32,7 @@ const EditPostBtn = ({ postId }) => {
 				{postEditingFetchingStatus === "loading" && clickId === postId ? (
 					<Spinner className="h-[1.2rem] w-[1.2rem] text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" />
 				) : (
-					"Edit"
+					<h3 className="text-sm">Edit</h3>
 				)}
 			</button>
 		</div>

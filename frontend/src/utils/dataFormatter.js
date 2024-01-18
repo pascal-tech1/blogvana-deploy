@@ -5,9 +5,9 @@ export function formatDate(dateString) {
 	const currentDate = moment();
 
 	if (currentDate.diff(inputDate, "days") < 1) {
-		return "Today";
+		return "today";
 	} else if (currentDate.diff(inputDate, "days") === 1) {
-		return "Yesterday";
+		return "yesterday";
 	} else if (currentDate.diff(inputDate, "days") < 7) {
 		return currentDate.diff(inputDate, "days") + " days ago";
 	} else {

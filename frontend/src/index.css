@@ -319,8 +319,13 @@ th {
 
 /* custom tailwind styles */
 .post-content p {
-	margin: 2.14em 0 !important;
+	margin-top: 1.56em;
+
+	font-size: 18px;
+
+	margin-bottom: -0.46em;
 }
+
 .post-content a {
 	@apply text-blue-500 hover:text-blue-400 drop-shadow-sm;
 }

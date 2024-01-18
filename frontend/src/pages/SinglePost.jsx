@@ -8,6 +8,7 @@ import {
 import { Link, useParams } from "react-router-dom";
 
 import {
+	CategoryViewsReadMin,
 	LazyLoadImg,
 	LikesSaveViews,
 	PostSearch,
@@ -203,13 +204,14 @@ const SinglePost = ({ singlePost }) => {
 							<div className="flex flex-wrap flex-col gap-1 ">
 								<PostUserInfo post={post} />
 
-								<div className=" flex flex-col">
+								<div className=" flex gap-1">
 									<LikesSaveViews post={post} />
+									<CategoryViewsReadMin post={post} />
 									<div className=" mt-1">
 										{loginUser?._id !== post?.user?._id ? (
 											<FollowingBtn
 												userToFollowOrUnfollow={post?.user}
-												className="  text-blue-600 shadow-sm hover:shadow-lg focus:shadow-sm px-2  rounded-lg hover:text-blue-500 transition-all delay-75  text-sm  "
+												className="  text-blue-600 shadow-sm hover:shadow-lg focus:shadow-sm px-2  rounded-lg hover:text-blue-500 transition-all delay-75  "
 											/>
 										) : (
 											<EditPostBtn post={post} postId={post?._id} />
@@ -305,7 +307,7 @@ const SinglePost = ({ singlePost }) => {
 							</h1>
 						</div>
 
-						<div className=" border-b dark:border-b-gray-800 py-6 font-inter grid grid-cols-1 max-[650px]:grid-cols-1 max-[768px]:grid-cols-2  gap-20 lg:grid-cols-2 w-[100%]">
+						<div className=" border-b dark:border-b-gray-800 py-4 font-inter grid grid-cols-1 max-[650px]:grid-cols-1 max-[768px]:grid-cols-2  gap-20 lg:grid-cols-2 w-[100%]">
 							{userPost && (
 								<MorePost
 									post={userPostWithCurrentPostRemove}
@@ -316,7 +318,7 @@ const SinglePost = ({ singlePost }) => {
 						</div>
 
 						{/* more post from blogvana */}
-						<div className=" py-6 flex flex-col justify-center items-center mx-auto ">
+						<div className=" py-4 flex flex-col justify-center items-center mx-auto ">
 							<h1
 								id="morePost"
 								className=" flex items-center gap-3   justify-center font-bold text-xl mb-10 dark:text-slate-200"

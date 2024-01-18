@@ -4,9 +4,9 @@ const SinglePostSkeleton = () => {
 	return (
 		<div
 			role="status"
-			class=" rounded  animate-pulse md:p-6  w-[90vw] flex gap-20 "
+			class=" rounded  animate-pulse   w-[95vw] flex gap-20  "
 		>
-			<div className="hidden  md:flex pl-4 pt-4 w-[16rem]  h-48 mb-4 dark:bg-lightdark rounded-lg   flex-col gap-2 ">
+			<div className="hidden  md:flex pt-4 w-[18rem] max-h-[80vh] pl-4  mb-4 dark:bg-lightdark rounded-lg   flex-col gap-2 ">
 				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
 				<div class="w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
 				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
@@ -14,7 +14,7 @@ const SinglePostSkeleton = () => {
 				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-32 mb-2"></div>
 				<div class="w-48 h-2 bg-gray-200 rounded-full dark:bg-gray-700"></div>
 			</div>
-			<div className=" w-full lg:max-w-[50rem] ">
+			<div className=" w-full lg:max-w-[50rem] overflow-y-auto">
 				<div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 mb-4"></div>
 				<div class="h-2 bg-gray-200 rounded-full dark:bg-gray-700 w-44  mb-2.5"></div>
 				<div class="flex items-center mb-4">

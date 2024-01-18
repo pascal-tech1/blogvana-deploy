@@ -17,11 +17,11 @@ import {
 //
 
 const PostInfo = ({ post }) => {
-	const user = useSelector((store) => store?.userSlice?.user);
 	const screenWidth = useScreenWidth();
 	const location = useLocation();
-	const navigate = useNavigate();
+
 	const dispatch = useDispatch();
+	console.log(post);
 
 	return (
 		<div className="flex flex-col mb-2 justify-self-center py-8 md:py-6 border-b dark:border-b dark:border-b-lightdark mt-1 rounded-md ">
@@ -77,8 +77,8 @@ const PostInfo = ({ post }) => {
 							}}
 							className="whitespace-nowrap  text-center text-sm delay-75 cursor-pointer self-start  flex items-center bg-gray-200 hover:bg-gray-300 rounded-md dark:text-slate-300 dark:bg-gray-700 hover:dark:bg-gray-800 py-[0.1rem] px-2"
 						>
-							{post?.categoryText?.charAt(0).toUpperCase() +
-								post?.categoryText?.slice(1).toLowerCase()}
+							{post?.category?.title?.charAt(0).toUpperCase() +
+								post?.category?.title?.slice(1).toLowerCase()}
 						</Link>
 					</div>
 				</div>

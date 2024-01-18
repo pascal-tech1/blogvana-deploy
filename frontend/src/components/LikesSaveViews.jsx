@@ -14,10 +14,7 @@ import { GoThumbsdown } from "react-icons/go";
 import { GoThumbsup } from "react-icons/go";
 
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import {
-	fetchPostByCategory,
-	setFetchFirstCategory,
-} from "../redux/post/allPostSlice";
+
 import { formatNumber } from "../utils/formatNumbersIn1000";
 import { CiBookmarkPlus, CiSaveUp2 } from "react-icons/ci";
 import { BsBookmarkPlus, BsHandThumbsUp } from "react-icons/bs";
@@ -49,7 +46,7 @@ const LikesSaveViews = ({ post }) => {
 				<button
 					onClick={() => handleLikes(post?._id)}
 					aria-label="like button"
-					className=" text-base hover:cursor-pointer p-[0.3rem] transition-all delay-75 hover:dark:bg-gray-800 hover:bg-gray-300 rounded-full "
+					className=" text-base hover:cursor-pointer p-2 transition-all delay-75 hover:dark:bg-gray-800 hover:bg-gray-300 rounded-full "
 				>
 					<GoThumbsup className=" text-xl" />
 				</button>
@@ -59,7 +56,7 @@ const LikesSaveViews = ({ post }) => {
 				<button
 					onClick={() => handleDislikes(post?._id)}
 					aria-label="dislike button"
-					className="text-base hover:cursor-pointer p-[0.3rem]  transition-all delay-75 hover:bg-gray-200 hover:dark:bg-gray-800 rounded-full "
+					className="text-base hover:cursor-pointer p-2  transition-all delay-75 hover:bg-gray-200 hover:dark:bg-gray-800 rounded-full "
 				>
 					<GoThumbsdown className=" text-xl" />
 				</button>
