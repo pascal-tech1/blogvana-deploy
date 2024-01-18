@@ -29,6 +29,7 @@ import PostInfoLoadingSkeleton from "./PostInfoLoadingSkeleton";
 import CategoryListSkeleton from "./categoryListSkeleton";
 import { TrendingPostSkeleton } from "./TrendingCategorySkeleton";
 import SinglePostSkeleton from "./singlePostSkeleton";
+import CategoryViewsReadMin from "./CategoryViewsReadMin";
 
 export {
 	NavBar,
@@ -58,4 +59,5 @@ export {
 	CategoryListSkeleton,
 	TrendingPostSkeleton,
 	SinglePostSkeleton,
+	CategoryViewsReadMin,
 };

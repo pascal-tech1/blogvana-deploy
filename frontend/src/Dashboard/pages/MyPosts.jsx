@@ -73,8 +73,7 @@ const MyPosts = () => {
 	);
 
 	useEffect(() => {
-		if (creatorPostStatus === "loading") return;
-
+		if (!id) return;
 		dispatch(clearCreatorAllPost());
 		dispatch(
 			fetchCreatorPosts({
@@ -82,7 +81,7 @@ const MyPosts = () => {
 				filter: MyPostSelectedFilter,
 			})
 		);
-	}, [MyPostSelectedFilter, dashboardSearchTerm]);
+	}, [MyPostSelectedFilter, id, dashboardSearchTerm]);
 
 	const handleCheckedItemcsChange = (_id, tableItems) => {
 		if (_id === "All") {

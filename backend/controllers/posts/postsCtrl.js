@@ -149,6 +149,7 @@ const fetchAllUserPostCtrl = expressAsyncHandler(async (req, res) => {
 // '''''''''''''''''''''''''''''''''''''''''''''
 const fetchUserPostCtrl = expressAsyncHandler(async (req, res) => {
 	const { userId } = req.body;
+	console.log(userId);
 	const { filter, searchTerm } = req.query;
 
 	const page = parseInt(req.query.page) || 1; // Current page number, default to 1
@@ -202,6 +203,7 @@ const fetchUserPostCtrl = expressAsyncHandler(async (req, res) => {
 			totalNumber: totalPosts,
 		});
 	} catch (error) {
+		console.log(error);
 		res.status(500).json({ message: error.message });
 	}
 });
@@ -502,6 +504,7 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 
 			searchQueryEmbedding = await main(searchQuery);
 		}
+
 		if (!searchQuery && where === "morePost") {
 			const { embedding } = await Post.findById(
 				new mongoose.Types.ObjectId(id)

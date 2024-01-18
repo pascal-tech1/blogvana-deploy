@@ -71,11 +71,9 @@ const AllPost = () => {
 						ref={allPost.length === index + 1 ? lastPostRef : null}
 						className=" pr-[2px] "
 					>
-						{/* The post info's including the user info */}
 						<PostInfo post={post} />
 					</div>
 				);
-				//
 			})}
 
 			{/* loading Spinner */}

@@ -1,33 +1,43 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { LikesSaveViews, PostUserInfo, LazyLoadImg, Tooltip } from ".";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	PostUserInfo,
+	LazyLoadImg,
+	Tooltip,
+	CategoryViewsReadMin,
+	LikesSaveViews,
+} from ".";
 import { useScreenWidth } from "../customHooks";
+import {
+	fetchPostByCategory,
+	setFetchFirstCategory,
+} from "../redux/post/allPostSlice";
 
 //
 
 const PostInfo = ({ post }) => {
 	const user = useSelector((store) => store?.userSlice?.user);
 	const screenWidth = useScreenWidth();
+	const location = useLocation();
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	return (
-		<div className="flex flex-col mb-2 justify-self-center py-8 md:py-6 border-b dark:border-b dark:border-b-lightdark mt-1 rounded-md px-3 ">
-			<div className=" min-[384px]:hidden">
-				<PostUserInfo post={post} />
-			</div>
+		<div className="flex flex-col mb-2 justify-self-center py-8 md:py-6 border-b dark:border-b dark:border-b-lightdark mt-1 rounded-md ">
 			<div className="flex flex-col  min-[351px]:flex-row  justify-between gap-4 mt-1">
 				{/* user who created the post  */}
 
 				<div>
-					<div className="max-[384px]:hidden mb-1">
+					<div className=" mb-1">
 						<PostUserInfo post={post} />
 					</div>
-					<div className=" self-start ">
+					<div className=" self-start flex flex-col  ">
 						<Link
 							to={`/single-post/${post?._id}`}
 							aria-label={`${post?.title}-link`}
 						>
-							<h3 className=" font-bold  text-sm mt-2 mb-2 md:mb-4  lg:text-lg dark:text-slate-100 ">
+							<h3 className=" font-bold  text-sm mt-2 lg:text-lg dark:text-slate-100 ">
 								{screenWidth < 1200 ? (
 									post.title.length > 60 ? (
 										<div className=" relative">
@@ -58,9 +68,18 @@ const PostInfo = ({ post }) => {
 									: post.title}
 							</p>
 						</div>
-						<div className=" text-md md:text-sm ">
-							<LikesSaveViews post={post} />
-						</div>
+						<Link
+							to={"/"}
+							onClick={(e) => {
+								dispatch(setFetchFirstCategory(post?.categoryText));
+								location.pathname === "/" &&
+									dispatch(fetchPostByCategory());
+							}}
+							className="whitespace-nowrap  text-center text-sm delay-75 cursor-pointer self-start  flex items-center bg-gray-200 hover:bg-gray-300 rounded-md dark:text-slate-300 dark:bg-gray-700 hover:dark:bg-gray-800 py-[0.1rem] px-2"
+						>
+							{post?.categoryText?.charAt(0).toUpperCase() +
+								post?.categoryText?.slice(1).toLowerCase()}
+						</Link>
 					</div>
 				</div>
 				<Link
@@ -71,7 +90,7 @@ const PostInfo = ({ post }) => {
 					{screenWidth > 350 ? (
 						<LazyLoadImg
 							backgroundClassName={
-								"w-[85vw] !h-[0.2rem] min-[351px]:w-[120px] lg:w-[120px] rounded-md relative border dark:border-slate-900"
+								"w-[85vw] !h-[0.2rem] min-[351px]:w-[80px] lg:w-[120px] rounded-md relative border dark:border-slate-900"
 							}
 							imgClassName={
 								"absolute inset-0 w-full h-full object-cover rounded-md"
@@ -96,6 +115,11 @@ const PostInfo = ({ post }) => {
 						/>
 					)}
 				</Link>
+			</div>
+			<div className=" flex justify-between flex-wrap lg:mr-4 mt-2">
+				<CategoryViewsReadMin post={post} />
+
+				<LikesSaveViews post={post} />
 			</div>
 		</div>
 	);
