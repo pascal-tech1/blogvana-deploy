@@ -319,14 +319,14 @@ th {
 
 /* custom tailwind styles */
 .post-content p {
-	margin-top: 1.56em;
+	margin:  1em 0;
 
 	font-size: 18px;
 
-	margin-bottom: -0.46em;
+	
 }
-.post-content code{
-	@apply  !bg-transparent underline;
+.post-content code {
+	@apply !bg-transparent text-[18px] underline;
 }
 
 .post-content a {

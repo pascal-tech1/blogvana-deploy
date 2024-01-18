@@ -88,14 +88,17 @@ const PostSearch = ({ categoryNumber, isTableOfContent }) => {
 
 				<form className="relative z-50   w-[50vw]">
 					<input
-						className={` text-xs  px-1 font-sm rounded-lg bg-gray-100 border dark:border-gray-600 focus:border-b-gray-300 dark:bg-lightdark py-2  text-center focus:outline-none w-full  dark:focus:border-b-blue-400`}
+						className={` text-xs  px-1 font-sm rounded-lg shadow-sm bg-gray-100 border dark:border-gray-600 focus:border-b-gray-500 dark:bg-lightdark py-2  text-center focus:outline-none w-full  dark:focus:border-b-blue-400`}
 						type="text"
 						id="searchInputPostMobile"
 						placeholder="Search"
 						value={searchTerm}
 						onChange={handleInputChange}
-						onClick={(e) => {
-							e.preventDefault();
+						onKeyDown={(e) => {
+							if (e.key === "Enter") {
+								e.preventDefault();
+								handleInputChange();
+							}
 						}}
 					/>
 				</form>

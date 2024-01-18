@@ -118,6 +118,12 @@ const NavBar = () => {
 						placeholder="Search"
 						value={searchTerm}
 						onChange={handleInputChange}
+						onKeyDown={(e) => {
+							if (e.key === "Enter") {
+								e.preventDefault();
+								handleInputChange();
+							}
+						}}
 					/>
 				</form>
 
