@@ -325,6 +325,9 @@ th {
 
 	margin-bottom: -0.46em;
 }
+.post-content code{
+	@apply  !bg-transparent underline;
+}
 
 .post-content a {
 	@apply text-blue-500 hover:text-blue-400 drop-shadow-sm;
@@ -369,7 +372,7 @@ blockquote {
 	@apply border border-gray-200 dark:border-neutral-800;
 }
 .ql-syntax {
-	@apply !max-h-fit py-4 px-2 !overflow-y-auto !shadow-md !rounded-md;
+	@apply !max-h-fit py-4 px-2 !overflow-y-auto !rounded-md;
 }
 .code-div {
 	@apply relative  px-2 py-4 pt-6 pb-2 !bg-[rgb(249,249,249)]  text-sm  dark:!bg-[#282C34]  rounded-lg p-4;
