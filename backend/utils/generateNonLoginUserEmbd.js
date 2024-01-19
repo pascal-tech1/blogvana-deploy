@@ -6,7 +6,9 @@ const generateNonLoginUserEmbd = async (page, randomPostId) => {
 		randomPostId = randomPost[0]?._id;
 		return { embedding: randomPost[0]?.embedding, randomPostId };
 	} else {
-		const { embedding } = await Post.findById(randomPostId);
+		const { embedding } = await Post.findById(randomPostId).select([
+			"embedding",
+		]);
 		return { embedding, randomPostId };
 	}
 };

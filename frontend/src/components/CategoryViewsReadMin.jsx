@@ -10,7 +10,7 @@ const CategoryViewsReadMin = ({ post }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	return (
-		<div className=" flex items-center gap-2 flex-wrap ">
+		<div className=" flex items-center text-sm gap-2 flex-wrap ">
 			<span className="flex gap-1 items-center  flex-nowrap">
 				<span className=" ">{formatNumber(post?.numViews)}</span>
 				{post?.numViews > 1 ? "views" : "view"}
@@ -29,7 +29,7 @@ const CategoryViewsReadMin = ({ post }) => {
 					dispatch(savePost(post?._id));
 				}}
 				aria-label="save post button"
-				className=" text-base ml-10rem hover:bg-gray-200 p-2 hover:dark:bg-gray-800 mr-1 rounded-full "
+				className=" ml-10rem hover:bg-gray-200 p-2 hover:dark:bg-gray-800 mr-1 rounded-full "
 			>
 				<BsBookmarkPlus className="" />
 			</button>

@@ -545,6 +545,7 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 	const searchQuery = req.query?.searchQuery;
 	const userId = req.query?.userId;
 	let randomPostId;
+	let preFilter;
 	randomPostId = req.query?.randomPostId;
 
 	const where = req.query?.where;
@@ -555,23 +556,23 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 		let searchQueryEmbedding;
 		let matchCriteria;
 
-		if (searchQuery) {
+		if (searchQuery && where !== "morePost") {
 			matchCriteria = {
 				score: { $gte: 0.9 },
 			};
 			searchQueryEmbedding = await main(searchQuery);
-		}
-
-		if (!searchQuery && where === "morePost") {
+		} else if (where === "morePost") {
 			const { embedding } = await Post.findById(
 				new mongoose.Types.ObjectId(id)
 			).select(["embedding"]);
-			console.log("search", embedding);
+
 			searchQueryEmbedding = embedding;
 			matchCriteria = { _id: { $ne: new mongoose.Types.ObjectId(id) } };
-		}
-
-		if (!searchQuery && userId !== "undefined" && where !== "morePost") {
+		} else if (
+			!searchQuery &&
+			userId !== "undefined" &&
+			where !== "morePost"
+		) {
 			const { embedding } = await User.findById(userId).select([
 				"embedding",
 			]);
@@ -586,17 +587,20 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 				matchCriteria = {};
 			} else {
 				searchQueryEmbedding = embedding;
-				const uniqueUserInteractions = await getUserSavedAndViewedHistory(
-					userId
-				);
+				// const uniqueUserInteractions = await getUserSavedAndViewedHistory(
+				// 	userId
+				// );
 				// const UserHistoryPostIds = uniqueUserInteractions.map(
 				// 	(idString) => new mongoose.Types.ObjectId(idString)
 				// );
 				// matchCriteria = { _id: { $nin: UserHistoryPostIds } };
 				matchCriteria = {};
 			}
-		}
-		if (!searchQuery && userId === "undefined" && where !== "morePost") {
+		} else if (
+			!searchQuery &&
+			userId === "undefined" &&
+			where !== "morePost"
+		) {
 			randomPostIdAndEmbedding = await generateNonLoginUserEmbd(
 				page,
 				randomPostId
@@ -605,7 +609,7 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 			randomPostId = randomPostIdAndEmbedding.randomPostId;
 			matchCriteria = {};
 		}
-		let preFilter;
+
 		if (category === "all") {
 			preFilter = { "category.title": { $ne: category } };
 		} else {

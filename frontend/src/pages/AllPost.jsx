@@ -84,7 +84,7 @@ const AllPost = () => {
 			</div>
 			<div className=" grid place-content-center">
 				{allPostStatus === "failed" && (
-					<div className=" ">
+					<div className=" py-3 ">
 						<h3 className=" text-red-500 -ml-10">fetching post failed</h3>
 						<button
 							onClick={handleFetchingPostFailed}
@@ -95,28 +95,15 @@ const AllPost = () => {
 					</div>
 				)}
 			</div>
-			<div>
-				{allPost.length === 0 &&
-					searchQuery &&
-					allPostStatus !== "loading" && (
-						<div className=" text-yellow-300">No Post found</div>
-					)}
+			<div className="py-3">
+				{allPost.length === 0 && allPostStatus !== "loading" && (
+					<div className=" text-yellow-300">No Post found</div>
+				)}
 			</div>
-			<div>
-				{!hasMore &&
-					searchQuery &&
-					allPostStatus !== "loading" &&
-					allPost.length > 0 && (
-						<h3 className=" text-yellow-300">No more Post</h3>
-					)}
-			</div>
-			<div>
-				{!hasMore &&
-					!searchQuery &&
-					allPostStatus !== "loading" &&
-					allPost.length === 0 && (
-						<h3 className=" text-yellow-300">No Post Found</h3>
-					)}
+			<div className=" py-3">
+				{!hasMore && allPostStatus !== "loading" && allPost.length > 0 && (
+					<h3 className=" text-yellow-300">No more Post</h3>
+				)}
 			</div>
 		</>
 	);

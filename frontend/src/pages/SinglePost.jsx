@@ -102,7 +102,6 @@ const SinglePost = ({ singlePost }) => {
 	}, [id]);
 
 	useEffect(() => {
-		dispatch(clearSearchAndCategory());
 		pageNumber > 1 &&
 			dispatch(
 				fetchPostByCategory({
@@ -119,7 +118,7 @@ const SinglePost = ({ singlePost }) => {
 
 			dispatch(clearUserPost());
 			dispatch(clearMorePost());
-			dispatch(clearSearchAndCategory());
+
 			setPageNumber(1);
 			dispatch(
 				fetchUserPost({ postId: post?._id, userId: post?.user?._id })

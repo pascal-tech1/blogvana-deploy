@@ -40,8 +40,7 @@ const Home = () => {
 	useEffect(() => {
 		if (trendingPost?.length > 0 || screenWidth <= 768) return;
 		dispatch(fetchTrendingPost(4));
-		console.log("i have run");
-	}, []);
+	}, [screenWidth]);
 
 	const handleSelected = (filter) => {
 		dispatch(setFetchFirstCategory(filter));
