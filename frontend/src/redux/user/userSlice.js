@@ -424,7 +424,8 @@ export const updateUserEmbedding = createAsyncThunk(
 
 const initialState = {
 	user: null,
-	token: getUserFromLocalStorage(),
+	token: getUserFromLocalStorage()?.userToken,
+	userId: getUserFromLocalStorage()?.userId,
 	randomUsers: [],
 	userfollowinglist: [],
 	followinglistTotalNumber: 0,
@@ -534,7 +535,8 @@ const userSlice = createSlice({
 			state.isLoading = false;
 			state.user = payload.user;
 			state.status = payload.status;
-			addUserToLocalStorage(payload.token);
+			console.log(payload.user._id);
+			addUserToLocalStorage(payload.token, payload.user._id);
 			state.token = payload.token;
 			toast.success(payload.message);
 		},

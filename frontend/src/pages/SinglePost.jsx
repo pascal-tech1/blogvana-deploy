@@ -204,7 +204,7 @@ const SinglePost = ({ singlePost }) => {
 							<div className="flex flex-wrap flex-col gap-1 ">
 								<PostUserInfo post={post} />
 
-								<div className=" flex gap-1">
+								<div className=" flex gap-1 flex-wrap">
 									<LikesSaveViews post={post} />
 									<CategoryViewsReadMin post={post} />
 									<div className=" mt-1">

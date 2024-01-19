@@ -10,7 +10,7 @@ const CategoryViewsReadMin = ({ post }) => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	return (
-		<div className=" flex items-center gap-2 ">
+		<div className=" flex items-center gap-2 flex-wrap ">
 			<span className="flex gap-1 items-center  flex-nowrap">
 				<span className=" ">{formatNumber(post?.numViews)}</span>
 				{post?.numViews > 1 ? "views" : "view"}

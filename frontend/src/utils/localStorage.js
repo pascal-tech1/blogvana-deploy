@@ -4,8 +4,8 @@ export const getUserFromLocalStorage = () => {
 	return user;
 };
 
-export const addUserToLocalStorage = (user) => {
-	localStorage.setItem("user", JSON.stringify(user));
+export const addUserToLocalStorage = (userToken, userId) => {
+	localStorage.setItem("user", JSON.stringify({ userToken, userId }));
 };
 
 export const removeUserFromLocalStorage = () => {

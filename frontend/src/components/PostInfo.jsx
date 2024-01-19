@@ -71,11 +71,11 @@ const PostInfo = ({ post }) => {
 						<Link
 							to={"/"}
 							onClick={(e) => {
-								dispatch(setFetchFirstCategory(post?.categoryText));
+								dispatch(setFetchFirstCategory(post?.category?.title));
 								location.pathname === "/" &&
 									dispatch(fetchPostByCategory());
 							}}
-							className="whitespace-nowrap  text-center text-sm delay-75 cursor-pointer self-start  flex items-center bg-gray-200 hover:bg-gray-300 rounded-md dark:text-slate-300 dark:bg-gray-700 hover:dark:bg-gray-800 py-[0.1rem] px-2"
+							className="whitespace-nowrap  text-center mt-1 text-sm delay-75 cursor-pointer self-start  flex items-center bg-gray-200 hover:bg-gray-300 rounded-md dark:text-slate-300 dark:bg-gray-700 hover:dark:bg-gray-800 py-[0.1rem] px-2"
 						>
 							{post?.category?.title?.charAt(0).toUpperCase() +
 								post?.category?.title?.slice(1).toLowerCase()}
@@ -116,7 +116,7 @@ const PostInfo = ({ post }) => {
 					)}
 				</Link>
 			</div>
-			<div className=" flex justify-between flex-wrap lg:mr-4 mt-2">
+			<div className=" flex justify-between flex-wrap mr-2 lg:mr-4 mt-2">
 				<CategoryViewsReadMin post={post} />
 
 				<LikesSaveViews post={post} />

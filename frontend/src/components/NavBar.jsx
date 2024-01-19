@@ -59,6 +59,7 @@ const NavBar = () => {
 			) {
 				console.log("clicked inside");
 			} else {
+				GF;
 				setIsDropdownOpen(false);
 			}
 		};
@@ -173,14 +174,14 @@ const NavBar = () => {
 								<div className="flex flex-col gap-3">
 									<Link
 										to="/stats"
-										className="bg-blue-500 flex gap-2 items-center  px-1 rounded-md  text-slate-100 hover:shadow-md transition-all hover:bg-blue-600"
+										className="bg-blue-500 flex gap-2 items-center py-1  px-2 rounded-md  text-slate-100 hover:shadow-md transition-all hover:bg-blue-600"
 									>
 										<FiUser />
-										Profile
+										Dashboard
 									</Link>
 									<button
 										onClick={handleLogOut}
-										className="bg-red-500 flex gap-2 items-center px-1 rounded-md text-white hover:shadow-md transition-all hover:bg-red-600"
+										className="bg-red-500 flex gap-2 items-center py-1 px-2 rounded-md text-white hover:shadow-md transition-all hover:bg-red-600"
 									>
 										<FiLogOut className="" />
 										Log Out

@@ -34,13 +34,12 @@ const PostUserInfo = ({ post }) => {
 								paddingBottom={"100%"}
 							/>
 						</div>
-
-						<div className="flex items-center gap-1">
-							<p className=" text-xs">{` ${post?.user?.firstName} ${post?.user?.lastName}  `}</p>
-							<PiDotDuotone />
-							<p className=" text-xs">{formatDate(post?.updatedAt)}</p>
-						</div>
 					</Link>
+					<div className="flex items-center gap-1 flex-wrap">
+						<p className=" text-xs">{` ${post?.user?.firstName} ${post?.user?.lastName}  `}</p>
+						<PiDotDuotone />
+						<p className=" text-xs">{formatDate(post?.updatedAt)}</p>
+					</div>
 					{/* if its not the user that created the post render the follow button else render the edit button */}
 				</div>
 			)}

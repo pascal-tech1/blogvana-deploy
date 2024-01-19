@@ -13,14 +13,14 @@ export const fetchPostByCategory = createAsyncThunk(
 			notLoginUserRandomPostFetchingId,
 			morePostCategory,
 		} = getState().allPostSlice;
-		const userId = getState().userSlice?.user?._id;
+		const userId = getState().userSlice?.userId;
 
 		const newPage = params?.page || page;
 		const newPostNumberPerPaage =
 			params?.postNumberPerPage || postNumberPerPage;
 		const category =
 			params?.where === "morePost" ? morePostCategory : activeCategory;
-		console.log(category);
+
 		try {
 			const resp = await customFetch(
 				`/posts/?page=${newPage}&postNumberPerPage=${newPostNumberPerPaage}

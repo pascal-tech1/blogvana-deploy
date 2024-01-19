@@ -18,18 +18,17 @@ const AllPost = () => {
 	const dispatch = useDispatch();
 	const { allPost, allPostStatus, searchQuery, hasMore, page } =
 		useSelector((store) => store.allPostSlice);
-	const token = getUserFromLocalStorage();
+
 	const loadingSkeletonNumber = page == 1 ? 10 : 1;
 
-	const { user } = useSelector((store) => store.userSlice);
+	const { user, userId } = useSelector((store) => store.userSlice);
 
 	useEffect(() => {
-		if (token && !user) return;
+		console.log("i have run");
 		if (allPost.length === 0) {
-			console.log("i have fetch all post");
 			searchQuery.length === 0 && dispatch(fetchPostByCategory());
 		}
-	}, [token, user]);
+	}, [userId]);
 
 	const observer = useRef();
 	const lastPostRef = useCallback(
@@ -112,9 +111,12 @@ const AllPost = () => {
 					)}
 			</div>
 			<div>
-				{!hasMore && !searchQuery && allPostStatus !== "loading" && (
-					<h3 className=" text-yellow-300">No more Post</h3>
-				)}
+				{!hasMore &&
+					!searchQuery &&
+					allPostStatus !== "loading" &&
+					allPost.length === 0 && (
+						<h3 className=" text-yellow-300">No Post Found</h3>
+					)}
 			</div>
 		</>
 	);

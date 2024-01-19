@@ -62,7 +62,8 @@ const ProfileView = () => {
 				<div className=" col-start-1 col-span-4  bg-white dark:bg-dark lg:shadow-sm lg:rounded-md">
 					<div className="w-full relative ">
 						<div className=" w-full  ">
-							<CoverPhoto user={user} />
+							<CoverPhoto
+							 user={user} />
 						</div>
 						<ProfilePhoto user={user} />
 						<div className="  mt-[6rem]  ">

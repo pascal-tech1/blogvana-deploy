@@ -13,7 +13,6 @@ async function main(input) {
 }
 
 async function query(data) {
-	console.log(data)
 	const result = await hf.textToSpeech({
 		model: "espnet/kan-bayashi_ljspeech_vits",
 		inputs: data,
@@ -22,7 +21,6 @@ async function query(data) {
 }
 
 module.exports = { main, query };
-
 
 // // Function to split the content into chunks
 // function splitContent(content, chunkSize) {

@@ -19,7 +19,7 @@ const UserDashboardMenu = ({ isMenuOpen, setIsMenuOpen }) => {
 	const dispatch = useDispatch();
 
 	const handleProfileClick = () => {
-		navigate("/profile-view");
+		navigate("/Profile-details");
 	};
 
 	const handleUupdatePassword = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import {
 	Spinner,
@@ -11,8 +11,16 @@ import {
 	LoadingSpinner,
 	CategoryViewsReadMin,
 } from "../components";
+import {
+	fetchPostByCategory,
+	setFetchFirstCategory,
+} from "../redux/post/allPostSlice";
+import { useDispatch } from "react-redux";
 
 const MorePost = ({ post, status }) => {
+	const location = useLocation();
+
+	const dispatch = useDispatch();
 	return (
 		<>
 			{post?.map((post, index) => (
@@ -50,9 +58,22 @@ const MorePost = ({ post, status }) => {
 						</div>
 
 						<PostUserInfo post={post} />
-						<div className=" flex justify-between flex-wrap">
-							<CategoryViewsReadMin post={post} />
+
+						<div className=" flex min-[300px]:gap-2 gap-4 items-center flex-wrap mr-2">
+							<Link
+								to={"/"}
+								onClick={(e) => {
+									dispatch(setFetchFirstCategory(post?.category?.title));
+									location.pathname === "/" &&
+										dispatch(fetchPostByCategory());
+								}}
+								className="whitespace-nowrap  text-center text-sm delay-75 cursor-pointer  flex items-center bg-gray-200 hover:bg-gray-300 rounded-md dark:text-slate-300 dark:bg-gray-700 hover:dark:bg-gray-800 py-[0.1rem] px-2"
+							>
+								{post?.category?.title?.charAt(0).toUpperCase() +
+									post?.category?.title?.slice(1).toLowerCase()}
+							</Link>
 							<LikesSaveViews post={post} />
+							<CategoryViewsReadMin post={post} />
 						</div>
 					</div>
 				</div>

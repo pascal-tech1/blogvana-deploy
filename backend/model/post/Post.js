@@ -64,6 +64,7 @@ const postSchema = new mongoose.Schema(
 		},
 		embedding: {
 			type: [Number],
+			select: false,
 		},
 	},
 	{

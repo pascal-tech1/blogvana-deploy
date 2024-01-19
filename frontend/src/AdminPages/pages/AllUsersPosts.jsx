@@ -249,13 +249,13 @@ const AllUsersPosts = () => {
 									</Tooltip>
 								</td>
 								<td className="tableData ">
-									<Tooltip info={post.likes.length}>
-										{post.likes.length}
+									<Tooltip info={post.likesCount}>
+										{post.likesCount}
 									</Tooltip>
 								</td>
 								<td className="tableData ">
-									<Tooltip info={post.likes.length}>
-										{post.disLikes.length}
+									<Tooltip info={post.disLikesCount}>
+										{post.disLikesCount}
 									</Tooltip>
 								</td>
 

@@ -101,37 +101,96 @@ const fetchAllUserPostCtrl = expressAsyncHandler(async (req, res) => {
 	const postNumberPerPage = parseInt(req.query.postNumberPerPage) || 10; // Number of items per page
 	const regexPattern = new RegExp(`.*${searchTerm}.*`, "i");
 	const sortingObject = filterCriteria(filter);
-
+	console.log(filter);
 	let searchQuery;
 
 	if (searchTerm) {
 		if (isValidObjectId(searchTerm)) {
 			searchQuery = { _id: new mongoose.Types.ObjectId(searchTerm) };
 		} else {
-			searchQuery = { categoryText: { $regex: regexPattern } };
+			searchQuery = { "category.title": { $regex: regexPattern } };
 		}
 	} else {
 		searchQuery = {};
 	}
-
+	console.log(sortingObject);
 	try {
-		const Posts = await Post.find(searchQuery);
-		const posts = await Post.find(searchQuery)
-			.populate({ path: "user", select: ["firstName", "lastName"] })
-			.populate({ path: "category", select: ["title"] })
-			.sort(sortingObject)
-			.skip((page - 1) * postNumberPerPage)
-			.limit(postNumberPerPage)
-			.select([
-				"-content",
-				"-description",
-				"-title",
-				"-image",
-				"-blurImageUrl",
-				"-password",
-			]);
+		const matchStage = {
+			$match: searchQuery,
+		};
 
-		const totalPosts = Posts.length;
+		const lookupUserStage = {
+			$lookup: {
+				from: "users",
+				localField: "user",
+				foreignField: "_id",
+				as: "user",
+			},
+		};
+
+		const unwindUserStage = {
+			$unwind: "$user",
+		};
+
+		const lookupCategoryStage = {
+			$lookup: {
+				from: "categories",
+				localField: "category",
+				foreignField: "_id",
+				as: "category",
+			},
+		};
+
+		const unwindCategoryStage = {
+			$unwind: "$category",
+		};
+		addFieldStage = {
+			$addFields: {
+				likesCount: { $size: "$likes" },
+				disLikesCount: { $size: "$disLikes" },
+			},
+		};
+
+		const projectStage = {
+			$project: {
+				content: 0,
+				description: 0,
+				title: 0,
+				image: 0,
+				blurImageUrl: 0,
+				password: 0,
+			},
+		};
+
+		const sortStage = {
+			$sort: sortingObject,
+		};
+
+		const skipStage = {
+			$skip: (page - 1) * postNumberPerPage,
+		};
+
+		const limitStage = {
+			$limit: postNumberPerPage,
+		};
+
+		const aggregationPipeline = [
+			lookupUserStage,
+			unwindUserStage,
+			lookupCategoryStage,
+			unwindCategoryStage,
+			addFieldStage,
+			projectStage,
+			matchStage,
+			sortStage,
+			skipStage,
+			limitStage,
+		];
+		console.log("im her before aggregation");
+		const posts = await Post.aggregate(aggregationPipeline);
+		console.log("im here after aggregation");
+
+		const totalPosts = await Post.countDocuments(searchQuery);
 		const totalPages = Math.ceil(totalPosts / postNumberPerPage);
 
 		res.json({
@@ -149,7 +208,7 @@ const fetchAllUserPostCtrl = expressAsyncHandler(async (req, res) => {
 // '''''''''''''''''''''''''''''''''''''''''''''
 const fetchUserPostCtrl = expressAsyncHandler(async (req, res) => {
 	const { userId } = req.body;
-	console.log(userId);
+
 	const { filter, searchTerm } = req.query;
 
 	const page = parseInt(req.query.page) || 1; // Current page number, default to 1
@@ -326,7 +385,6 @@ const updatePostCtrl = expressAsyncHandler(async (req, res) => {
 				image: imageUrl,
 				content: cleanHtml,
 				category: categoryId,
-				categoryText: category,
 				blurImageUrl: req.blurImageUrl,
 			},
 			{
@@ -501,14 +559,14 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 			matchCriteria = {
 				score: { $gte: 0.9 },
 			};
-
 			searchQueryEmbedding = await main(searchQuery);
 		}
 
 		if (!searchQuery && where === "morePost") {
 			const { embedding } = await Post.findById(
 				new mongoose.Types.ObjectId(id)
-			);
+			).select(["embedding"]);
+			console.log("search", embedding);
 			searchQueryEmbedding = embedding;
 			matchCriteria = { _id: { $ne: new mongoose.Types.ObjectId(id) } };
 		}
@@ -549,9 +607,9 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 		}
 		let preFilter;
 		if (category === "all") {
-			preFilter = { categoryText: { $ne: category } };
+			preFilter = { "category.title": { $ne: category } };
 		} else {
-			preFilter = { categoryText: { $eq: category } };
+			preFilter = { "category.title": { $eq: category } };
 		}
 
 		const posts = await Post.aggregate([
@@ -559,7 +617,7 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 				$vectorSearch: {
 					index: "vector_index",
 					path: "embedding",
-					filter: preFilter,
+
 					queryVector: searchQueryEmbedding,
 					numCandidates: 10000,
 					limit: 10000,
@@ -588,11 +646,11 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 			{
 				$unwind: "$category",
 			},
+
 			{
 				$project: {
 					_id: 1,
 					title: 1,
-					category: 1,
 					description: 1,
 					numViews: 1,
 					readingTime: 1,
@@ -602,7 +660,7 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 					image: 1,
 					updatedAt: 1,
 					createdAt: 1,
-					categoryText: 1,
+
 					score: {
 						$meta: "vectorSearchScore",
 					},
@@ -611,10 +669,14 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 					"user.lastName": 1,
 					"user.profilePhoto": 1,
 					"user.blurProfilePhoto": 1,
-					category: "$category",
+					"category.title": 1,
 				},
 			},
-			{ $match: matchCriteria },
+			{
+				$match: {
+					$and: [preFilter, matchCriteria],
+				},
+			},
 			{ $skip: skip },
 			{ $limit: postNumberPerPage },
 		]);
@@ -622,6 +684,7 @@ const fetchPostByCategoryCtrl = expressAsyncHandler(async (req, res) => {
 		res.status(200).json({ posts, randomPostId });
 		return;
 	} catch (error) {
+		console.log(error);
 		res.status(500).json({ error: "Internal Server Error" });
 	}
 });
