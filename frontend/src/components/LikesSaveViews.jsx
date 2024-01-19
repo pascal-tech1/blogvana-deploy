@@ -48,7 +48,7 @@ const LikesSaveViews = ({ post }) => {
 					aria-label="like button"
 					className=" text-base hover:cursor-pointer p-2 transition-all delay-75 hover:dark:bg-gray-800 hover:bg-gray-300 rounded-full "
 				>
-					<GoThumbsup className=" " />
+					<GoThumbsup className=" text-xl " />
 				</button>
 				<span className=" text-sm">{post?.likes?.length}</span>
 			</span>
@@ -58,7 +58,7 @@ const LikesSaveViews = ({ post }) => {
 					aria-label="dislike button"
 					className="text-base hover:cursor-pointer p-2  transition-all delay-75 hover:bg-gray-200 hover:dark:bg-gray-800 rounded-full "
 				>
-					<GoThumbsdown className=" " />
+					<GoThumbsdown className=" text-xl " />
 				</button>
 				<span className=" text-sm">{post?.disLikes?.length}</span>
 			</span>
