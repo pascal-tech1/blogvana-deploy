@@ -18,14 +18,16 @@ import { FiLogOut, FiUser } from "react-icons/fi";
 import { LuLogIn, LuLogOut } from "react-icons/lu";
 import useClickOutside from "../customHooks/useClickOutside.js";
 
-import { ContactMe, Theme } from "../components";
+import { ContactMe, LoginLoadingSkeleton, Theme } from "../components";
 
 import { useSearchWithDebounce } from "../customHooks/SearchWithDebounce.js";
 import { BiMenu } from "react-icons/bi";
+import { getUserFromLocalStorage } from "../utils/localStorage.js";
 
 const NavBar = () => {
 	const user = useSelector((store) => store?.userSlice.user);
 	const [showLogOut, setShowLogOut] = useState(false);
+	const userId = getUserFromLocalStorage()?.userId;
 
 	const dispatch = useDispatch();
 
@@ -199,6 +201,8 @@ const NavBar = () => {
 								<h3 className=" hidden md:flex text-blue-400">write</h3>
 							</Link>
 						</div>
+					) : userId ? (
+						<LoginLoadingSkeleton />
 					) : (
 						<div className="flex gap-4 items-center">
 							<Link

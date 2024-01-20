@@ -14,7 +14,6 @@ const {
 } = require("./middlewares/error/errorhandler");
 const messageRoutes = require("./route/message/messageRoutes");
 
-
 const app = express();
 
 connectDB();
