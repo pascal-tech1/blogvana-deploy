@@ -6,10 +6,11 @@ const {
 	fetchMsgCtrl,
 	MsgPascalCtrl,
 } = require("../../controllers/message/messageCtrl");
+const testAuthMiddleWare = require("../../middlewares/authentication/testUserAuth");
 
 const messageRoutes = express.Router();
 
-messageRoutes.post("/", authMiddleWare, createMsgCtrl);
+messageRoutes.post("/", authMiddleWare, testAuthMiddleWare, createMsgCtrl);
 messageRoutes.get("/", authMiddleWare, fetchMsgCtrl);
 messageRoutes.post("/contact-me", MsgPascalCtrl);
 

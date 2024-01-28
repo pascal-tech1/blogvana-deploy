@@ -95,8 +95,9 @@ const messageSlice = createSlice({
 			}
 			state.receivedMessageCount = payload.receivedMessageCount;
 		},
-		[fetchMsg.rejected]: (state) => {
+		[fetchMsg.rejected]: (state, { papyload }) => {
 			state.fetchMessageStatus = "failed";
+			toast.error(payload.message);
 		},
 		[sendPascalMsg.pending]: (state) => {
 			state.SendingPascalMsgtatus = "loading";

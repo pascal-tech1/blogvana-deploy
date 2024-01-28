@@ -256,7 +256,7 @@ const adminSlice = createSlice({
 			);
 			toast.success(payload.message);
 		},
-		[deletePostAdmin.rejected]: (state, action) => {
+		[deletePostAdmin.rejected]: (state, { payload }) => {
 			state.deletingPostStatus = "falied";
 			toast.error(payload.message);
 		},
@@ -292,7 +292,7 @@ const adminSlice = createSlice({
 			});
 			toast.success(payload.message);
 		},
-		[blockOrUnblockUser.rejected]: (state, action) => {
+		[blockOrUnblockUser.rejected]: (state, { payload }) => {
 			state.blockOrUnblockUserStatus = "falied";
 			toast.error(payload.message);
 		},

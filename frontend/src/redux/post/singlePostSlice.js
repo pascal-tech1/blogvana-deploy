@@ -221,7 +221,7 @@ const singlePostSlice = createSlice({
 			state.isBlocked = payload?.isBlocked;
 			state.postEditingStatus = "failed";
 			console.log("update", payload);
-			toast.error(payload?.messsage);
+			toast.error(payload?.message);
 		},
 	},
 });
