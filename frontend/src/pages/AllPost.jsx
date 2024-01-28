@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useCallback } from "react";
+import { TiWarning } from "react-icons/ti";
 import {
 	ClearSearch,
 	PostInfo,
@@ -24,7 +25,6 @@ const AllPost = () => {
 	const { user, userId } = useSelector((store) => store.userSlice);
 
 	useEffect(() => {
-		console.log("i have run");
 		if (allPost.length === 0) {
 			searchQuery.length === 0 && dispatch(fetchPostByCategory());
 		}
@@ -77,6 +77,20 @@ const AllPost = () => {
 
 			{/* loading Spinner */}
 			<div className="grid ">
+				{loadingSkeletonNumber === 10 && (
+					<blockquote>
+						<div className=" flex gap-2 items-center ">
+							<TiWarning className=" text-orange-400 text-3xl" />
+							<p>NOTE</p>
+						</div>
+						<p className=" text-sm">
+							This project utilizes a MongoDB free tier cluster. Please be
+							aware that there might be an initial load time on your first
+							requst due to MongoDB's warm-up process. Subsequent request
+							will be much faster. Thank you for your patience.
+						</p>
+					</blockquote>
+				)}
 				{(allPostStatus === "loading" || allPostStatus === "idle") &&
 					Array.from({ length: loadingSkeletonNumber }).map((_, index) => (
 						<PostInfoLoadingSkeleton key={index} />

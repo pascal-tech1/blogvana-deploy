@@ -21,7 +21,7 @@ const PostInfo = ({ post }) => {
 	const location = useLocation();
 
 	const dispatch = useDispatch();
-	console.log(post);
+	
 
 	return (
 		<div className="flex flex-col mb-2 justify-self-center py-8 md:py-6 border-b dark:border-b dark:border-b-lightdark mt-1 rounded-md ">

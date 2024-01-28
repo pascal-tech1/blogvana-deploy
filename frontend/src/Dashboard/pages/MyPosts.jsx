@@ -286,7 +286,7 @@ const MyPosts = () => {
 								<tr className="   tableData">
 									<td></td>
 									<td className="text-yellow-400  stickyBottom   tableData ">
-										No more User
+										No more post
 									</td>
 								</tr>
 							)}

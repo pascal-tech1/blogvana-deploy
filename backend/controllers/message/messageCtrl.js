@@ -116,7 +116,9 @@ const fetchMsgCtrl = expressAsyncHandler(async (req, res) => {
 });
 
 const MsgPascalCtrl = expressAsyncHandler(async (req, res) => {
+	console.log("im her sending data");
 	const { sendingData } = req.body;
+	console.log(sendingData, req.body);
 
 	const subject = `Message from BlogVana user to Pascal`;
 	function flattenObjectToString(obj, parentKey = "") {
@@ -137,12 +139,12 @@ const MsgPascalCtrl = expressAsyncHandler(async (req, res) => {
 
 		return result;
 	}
-
 	const data = flattenObjectToString(sendingData);
+	console.log(data);
 
 	let mailDetails = {
 		from: "pascalazubike003@gmail.com",
-		to: "pascalazubike10@gmail.com",
+		to: "pascalazubike003@gmail.com",
 		subject,
 		html: data,
 	};
