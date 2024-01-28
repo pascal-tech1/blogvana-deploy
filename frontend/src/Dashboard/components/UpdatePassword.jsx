@@ -6,11 +6,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import { BsEye, BsEyeSlash } from "react-icons/bs";
-import { setChangePassword, updatePassword } from "../../redux/user/userSlice";
-// import {
-// 	setChangePassword,
-// 	updatePassword,
-// } from "../../../redux/user/userSlice";
+import {
+	setChangePassword,
+	updatePassword,
+} from "../../redux/user/userSlice";
 
 const UpdatePassword = () => {
 	const dispatch = useDispatch();
@@ -34,13 +33,12 @@ const UpdatePassword = () => {
 	const formSchema = Yup.object().shape({
 		oldPassword: Yup.string().required("Old Password is required"),
 
-		password: Yup.string()
-			.required("No password provided.")
+		password: Yup.string().required("No password provided.")
 
-			.matches(
-				/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-				"Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
-			),
+		.matches(
+			/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+			"Password must contain at least one uppercase letter, one lowercase letter, one number, one special character, and be at least 8 characters long."
+		),
 
 		confirmPassword: Yup.string()
 			.required("Confirm Password is required")

@@ -84,10 +84,10 @@ const AllPost = () => {
 							<p>NOTE</p>
 						</div>
 						<p className=" text-sm">
-							This project utilizes a MongoDB free tier cluster. Please be
-							aware that there might be an initial load time on your first
-							requst due to MongoDB's warm-up process. Subsequent request
-							will be much faster. Thank you for your patience.
+							This project utilizes a MongoDB free shared cluster. Please
+							be aware that there might be an initial load time on your
+							first requst. Subsequent request will be much faster. Thank
+							you for your patience.
 						</p>
 					</blockquote>
 				)}
