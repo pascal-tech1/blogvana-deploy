@@ -82,6 +82,16 @@ const Login = () => {
 					<p className=" text-gray-400 text-sm text-center">
 						Login to access your personalized journey
 					</p>
+
+					<p className="text-gray-400 text-sm text-center">
+						to test the account but with restrictions use
+					</p>
+					<p className="text-gray-400 text-sm text-center">
+						password : 1234
+					</p>
+					<p className="text-gray-400 text-sm text-center">
+						email : test@blogvana.com
+					</p>
 				</div>
 
 				<label className=" form-label  " htmlFor="email">

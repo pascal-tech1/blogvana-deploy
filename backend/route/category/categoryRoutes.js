@@ -29,5 +29,10 @@ categoryRoutes.put(
 	testAuthMiddleWare,
 	updateCategoryCtrl
 );
-categoryRoutes.put("/delete", authMiddleWare, deleteCategoryCtrl);
+categoryRoutes.put(
+	"/delete",
+	authMiddleWare,
+	testAuthMiddleWare,
+	deleteCategoryCtrl
+);
 module.exports = categoryRoutes;
