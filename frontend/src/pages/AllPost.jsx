@@ -79,15 +79,22 @@ const AllPost = () => {
 			<div className="grid ">
 				{loadingSkeletonNumber === 10 && (
 					<blockquote>
-						<div className=" flex gap-2 items-center ">
+						<div className=" flex gap-2 items-center mb-1 ">
 							<TiWarning className=" text-orange-400 text-3xl" />
 							<p>NOTE</p>
 						</div>
 						<p className=" text-sm">
-							This project utilizes a MongoDB free shared cluster. Please
-							be aware that there might be an initial load time on your
-							first requst. Subsequent request will be much faster. Thank
-							you for your patience.
+							Behind the scenes, this service runs on render free instance,
+							which has a short spin-up time after 15mins of inactivity.
+							It's like starting a fire - takes a little effort at first,
+							but then it's all smooth sailing!
+							<a
+								href="https://docs.render.com/free"
+								className=" text-blue-500 hover:text-blue-600 ml-1"
+								target="_blank"
+							>
+								learn more
+							</a>
 						</p>
 					</blockquote>
 				)}
