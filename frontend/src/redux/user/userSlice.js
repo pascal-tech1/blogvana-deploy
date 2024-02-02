@@ -332,7 +332,6 @@ export const confirmSentEmail = createAsyncThunk(
 export const sendForgotPasswordEmail = createAsyncThunk(
 	"send/forgotPasswordEmail",
 	async (email, { getState, rejectWithValue }) => {
-		console.log("im here");
 		try {
 			const resp = await customFetch.post(`/users/forget-password`, email);
 
@@ -473,7 +472,7 @@ const userSlice = createSlice({
 			state.chartSelectedFilter = "likes and dislikes";
 			state.userPostImpression = null;
 			state.followingListPageNumber = 1;
-			state.followsNumberPerPage = 2;
+			state.followsNumberPerPage = 10;
 			state.followersListPageNumber = 1;
 			state.confirmSentEmailStatus = "idle";
 			state.resetPasswordStatus = "idle";

@@ -42,6 +42,13 @@ const Home = () => {
 		dispatch(fetchTrendingPost(4));
 	}, [screenWidth]);
 
+	useEffect(() => {
+		const intervalId = setInterval(() => {
+			fetchTrendingPost(4);
+		}, 14 * 60 * 1000); // 14 minutes in milliseconds
+
+		return () => clearInterval(intervalId);
+	}, []);
 	const handleSelected = (filter) => {
 		dispatch(setFetchFirstCategory(filter));
 		dispatch(fetchPostByCategory());

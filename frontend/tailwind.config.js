@@ -14,9 +14,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				inter: ["Graphik", "sans"],
-				// Or create a separate font family:
-				// graphik: ['Graphik'],
+				inter: ["Helvetica", "sans"],
 			},
 			colors: {
 				lightdark: "#202127",

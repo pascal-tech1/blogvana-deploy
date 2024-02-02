@@ -319,11 +319,9 @@ th {
 
 /* custom tailwind styles */
 .post-content p {
-	margin:  1em 0;
+	margin: 1em 0;
 
 	font-size: 18px;
-
-	
 }
 .post-content code {
 	@apply !bg-transparent text-[18px] underline;
@@ -456,6 +454,6 @@ input:checked + .slider:before {
 /* fonts  */
 
 @font-face {
-	font-family: "Graphik";
-	src: url("../public/fonts/Graphik-Regular.woff2") format("woff2");
+	font-family: "Helvetica Neue";
+	src: url("../public/fonts/HelveticaNeueRoman.otf") format("otf");
 }

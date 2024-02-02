@@ -117,9 +117,11 @@ const AllPost = () => {
 				)}
 			</div>
 			<div className="py-3">
-				{allPost.length === 0 && allPostStatus !== "loading" && (
-					<div className=" text-yellow-300">No Post found</div>
-				)}
+				{allPost.length === 0 &&
+					allPostStatus !== "loading" &&
+					allPostStatus !== "failed" && (
+						<div className=" text-yellow-300">No Post found</div>
+					)}
 			</div>
 			<div className=" py-3">
 				{!hasMore && allPostStatus !== "loading" && allPost.length > 0 && (
