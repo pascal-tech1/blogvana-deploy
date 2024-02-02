@@ -113,7 +113,7 @@ const AllUsers = () => {
 		"highest Following",
 		"lowest Following",
 	];
-	console.log(allUsers);
+	
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const openModal = () => {
 		setCheckedItemId((prev) => prev.filter((item) => item !== "User Id"));

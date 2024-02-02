@@ -204,7 +204,7 @@ const generalPostSlice = createSlice({
 		},
 		[deletePost.rejected]: (state, { payload }) => {
 			state.deletingPostStatus = "falied";
-			console.log(payload);
+
 			toast.error(payload.message);
 		},
 	},

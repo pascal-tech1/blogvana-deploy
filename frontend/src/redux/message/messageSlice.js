@@ -44,7 +44,7 @@ export const fetchMsg = createAsyncThunk(
 export const sendPascalMsg = createAsyncThunk(
 	"send/pascal-message",
 	async (sendingData, { getState, rejectWithValue, h }) => {
-		console.log(sendingData);
+		
 		try {
 			const resp = await customFetch.post(
 				"/message/contact-me",

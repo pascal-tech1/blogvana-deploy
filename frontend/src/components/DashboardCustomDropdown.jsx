@@ -33,7 +33,7 @@ const DashboardCustomDropdown = ({
 				(iconRef?.current && iconRef?.current.contains(event.target))
 			) {
 				// Click occurred inside the div
-				console.log("clicked inside");
+				
 			} else {
 				// Click occurred outside the div
 				setIsOpen(false);

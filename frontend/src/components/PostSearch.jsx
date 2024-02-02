@@ -41,7 +41,7 @@ const PostSearch = ({ categoryNumber, isTableOfContent }) => {
 	}, []);
 
 	const handleSelected = (filter) => {
-		console.log("im here fetch more Post postSearch");
+		
 		dispatch(setFetchFirstCategory(filter));
 
 		location.pathname === "/" && dispatch(fetchPostByCategory());

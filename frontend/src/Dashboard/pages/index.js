@@ -35,7 +35,7 @@ export {
 };
 
 export const prefetchComponents = () => {
-	console.log("i have run componetn fetch");
+	
 	const componentsToPrefetch = [
 		import("./Layout"),
 		import("./Followers"),

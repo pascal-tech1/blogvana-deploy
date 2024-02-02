@@ -4,7 +4,7 @@ import customFetch from "../../utils/axios";
 export const fetchUserPost = createAsyncThunk(
 	"User/post",
 	async (id, { getState, rejectWithValue }) => {
-		console.log(id);
+		
 		const page = 1;
 		const postNumberPerPage = 4;
 		try {

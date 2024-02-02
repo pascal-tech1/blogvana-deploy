@@ -403,8 +403,6 @@ export const changeEmail = createAsyncThunk(
 export const updateUserEmbedding = createAsyncThunk(
 	"update/UserEmbeddings",
 	async (_, { getState, rejectWithValue }) => {
-		console.log("updating user embedding running");
-		console.log("im here managing user");
 		try {
 			const resp = await customFetch(`/users/update-embedding`, {
 				headers: {
@@ -412,7 +410,6 @@ export const updateUserEmbedding = createAsyncThunk(
 				},
 			});
 		} catch (error) {
-			console.log(error);
 			if (!error?.response) {
 				throw new Error(error);
 			}
@@ -534,7 +531,7 @@ const userSlice = createSlice({
 			state.isLoading = false;
 			state.user = payload.user;
 			state.status = payload.status;
-			console.log(payload.user._id);
+
 			addUserToLocalStorage(payload.token, payload.user._id);
 			state.token = payload.token;
 			toast.success(payload.message);

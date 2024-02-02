@@ -48,10 +48,6 @@ const Entry = React.memo(({ entry, depth, path }) => {
 
 	useEffect(() => {
 		if (navRef.current) {
-			console.log(
-				activeLink.toLowerCase(),
-				navRef.current.text.toLowerCase()
-			);
 			if (navRef.current.text.toLowerCase() === activeLink.toLowerCase()) {
 				navRef.current.click();
 			}

@@ -30,7 +30,6 @@ const Login = () => {
 	}, [user]);
 	useEffect(() => {
 		const comp = prefetchComponents();
-		console.log(comp);
 	}, []);
 
 	const formik = useFormik({
@@ -135,7 +134,7 @@ const Login = () => {
 						{formik.touched.password && formik.errors.password}
 					</h1>
 				</div>
-				{console.log(isLoading)}
+
 				<button
 					disabled={isLoading}
 					type="submit"

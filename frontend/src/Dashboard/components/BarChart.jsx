@@ -89,7 +89,7 @@ function BarChart() {
 			y: {
 				ticks: {
 					callback: function (value) {
-						console.log(value);
+						
 						return value >= 1000
 							? value / 1000 + "k"
 							: isWholeNumber(value)
@@ -158,7 +158,6 @@ function BarChart() {
 	};
 
 	const allFilter = ["likes and dislikes", "number of views"];
-	console.log(data);
 
 	return (
 		<div className="w-full h-[300px]  flex flex-col  py-2 rounded-lg font-inter">

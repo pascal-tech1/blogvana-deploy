@@ -14,7 +14,7 @@ const ComfirmEmailPage = () => {
 	const { user } = useSelector((store) => store.userSlice);
 
 	const newEmail = searchParams.get("email");
-	console.log(newEmail);
+
 	useEffect(() => {
 		if (confirmSentEmailStatus !== "idle") return;
 

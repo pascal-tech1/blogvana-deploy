@@ -127,7 +127,7 @@ const CreatePost = () => {
 			values.readingTime = readingTime;
 			values.title =
 				values.title.charAt(0).toUpperCase() + values.title.slice(1);
-			console.log(values);
+			
 			isEditing
 				? dispatch(updatePost(values))
 				: dispatch(createPost(values));

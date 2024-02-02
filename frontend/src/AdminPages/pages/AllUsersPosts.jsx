@@ -137,7 +137,6 @@ const AllUsersPosts = () => {
 		dispatch(setSearchTermInStore(""));
 	};
 
-	console.log(allPost);
 	return (
 		<div className=" font-inter shadow-md  overflow-hidden h-[85vh] dark:bg-dark rounded-lg p-2  ">
 			{/* clear search */}

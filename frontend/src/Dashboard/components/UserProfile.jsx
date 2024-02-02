@@ -34,16 +34,6 @@ const UserProfile = () => {
 
 		onSubmit: (values) => {
 			const { firstName, lastName, profession, location } = user;
-			console.log(
-				firstName,
-				values.firstName,
-				lastName,
-				values.lastName,
-				profession,
-				values.profession,
-				location,
-				values.location
-			);
 
 			if (
 				firstName === values.firstName &&

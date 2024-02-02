@@ -39,21 +39,14 @@ const AdditionalUserProfile = () => {
 			setIsUserProfileClicked(!isUserProfileClicked);
 			if (!isUserProfileClicked) return;
 			const { language, nickName, education } = user;
-			console.log(
-				language,
-				values.language,
-				nickName,
-				values.nickName,
-				education,
-				values.education
-			);
+			
 
 			if (
 				language === values.language &&
 				nickName === values.nickName &&
 				education === values.education
 			) {
-				console.log("im her returng");
+				
 				return;
 			}
 			const userData = {

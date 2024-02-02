@@ -171,9 +171,9 @@ const allPostSlice = createSlice({
 			state.trendingPostStatus = "loading";
 		},
 		[fetchTrendingPost.fulfilled]: (state, { payload }) => {
-			console.log(payload);
+			
 			state.trendingPostStatus = "success";
-			console.log(payload);
+			
 			state.trendingPost = payload;
 		},
 		[fetchTrendingPost.rejected]: (state, { payload }) => {

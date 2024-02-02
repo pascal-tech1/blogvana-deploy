@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { BiDownload, BiReset, BiZoomIn, BiZoomOut } from "react-icons/bi";
-import { FiUploadCloud } from "react-icons/fi";
+import { IoCloudDoneSharp } from "react-icons/io5";
 import { LuImagePlus } from "react-icons/lu";
 import {
 	MdCancel,
@@ -175,7 +175,7 @@ export const CropImage = ({
 						onClick={handleImageUpload}
 						className=" border shadow-md hover:shadow-sm py-1 rounded-md px-3"
 					>
-						<FiUploadCloud />
+						<IoCloudDoneSharp />
 					</button>
 				</div>
 				{/* cropper image */}
