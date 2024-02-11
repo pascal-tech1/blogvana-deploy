@@ -68,9 +68,10 @@ export const fetchCreatorPosts = createAsyncThunk(
 		const postNumberPerPage = 10;
 		const { dashboardSearchTerm } = getState().userSlice;
 		const { creatorAllPostPageNumber } = getState().generalPostSlice;
+		const pageNumber = params?.page? params.page : creatorAllPostPageNumber
 		try {
 			const resp = await customFetch.put(
-				`/posts/user-post?page=${creatorAllPostPageNumber}&postNumberPerPage=${postNumberPerPage}&filter=${params.filter}&searchTerm=${dashboardSearchTerm}`,
+				`/posts/user-post?page=${pageNumber}&postNumberPerPage=${postNumberPerPage}&filter=${params.filter}&searchTerm=${dashboardSearchTerm}`,
 				params
 			);
 
