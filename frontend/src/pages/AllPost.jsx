@@ -77,27 +77,6 @@ const AllPost = () => {
 
 			{/* loading Spinner */}
 			<div className="grid ">
-				{loadingSkeletonNumber === 10 && (
-					<blockquote>
-						<div className=" flex gap-2 items-center mb-1 ">
-							<TiWarning className=" text-orange-400 text-3xl" />
-							<p>NOTE</p>
-						</div>
-						<p className=" text-sm">
-							Behind the scenes, this service runs on render free instance,
-							which has a short spin-up time after 15mins of inactivity.
-							It's like starting a fire - takes a little effort at first,
-							but then it's all smooth sailing!
-							<a
-								href="https://docs.render.com/free"
-								className=" text-blue-500 hover:text-blue-600 ml-1"
-								target="_blank"
-							>
-								learn more
-							</a>
-						</p>
-					</blockquote>
-				)}
 				{(allPostStatus === "loading" || allPostStatus === "idle") &&
 					Array.from({ length: loadingSkeletonNumber }).map((_, index) => (
 						<PostInfoLoadingSkeleton key={index} />
