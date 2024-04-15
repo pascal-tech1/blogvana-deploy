@@ -1,4 +1,5 @@
 import moment from "moment";
+// use a radom comment
 export function formatDate(dateString) {
 	const inputDate = moment(dateString, "YYYY-MM-DD"); // Assuming dateString is in the format 'YYYY-MM-DD'
 	const currentDate = moment();
