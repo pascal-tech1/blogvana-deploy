@@ -8,7 +8,7 @@ const customFetch = axios.create({
 });
 
 export default customFetch;
-
+// just for local hist development
 // const customFetch = axios.create({
 // 	baseURL: " http://localhost:5000/api",
 // });
