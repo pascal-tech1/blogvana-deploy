@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const customFetch = axios.create({
-	 baseURL: "https://blogvana-deploy-jm7c-q5z9garcr-pascals-projects-4016dc21.vercel.app/api",
+	 baseURL: "https://blogvana-backend.onrender.com",
 	
 	// baseURL: "https://blogvana-deploy-production.up.railway.app/api",
 	
