@@ -2,7 +2,7 @@ import axios from "axios";
 
 const customFetch = axios.create({
 	 // baseURL: "https://blogvana-backend.onrender.com/api",
-	baseURL: "https://blogvana-backend.vercel.app/api",
+	baseURL: "https://blogvana-backend-git-main-pascals-projects-4016dc21.vercel.app/api",
 	
 });
 
